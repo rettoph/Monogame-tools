@@ -1,11 +1,7 @@
-﻿using System;
-
+﻿using BulletMonogameDemo.Demos;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-
-using BulletMonogameDemo.Demos;
 
 namespace BulletMonogameDemo
 {
@@ -34,6 +30,8 @@ namespace BulletMonogameDemo
             graphics.PreferMultiSampling = false;
             Window.IsBorderless = true;
             Window.Position = new Point(0, 0);
+            Window.AllowUserResizing = true;
+            graphics.IsFullScreen = true;
 
             IsMouseVisible = true;
             Instance = this;
@@ -91,10 +89,10 @@ namespace BulletMonogameDemo
 
             if (currentDemo == null)
             {
-               
+
                 if (over > -1)
                 {
-                    
+
                     if ((ms.LeftButton == ButtonState.Released) && (oldms.LeftButton == ButtonState.Pressed))
                     {
                         if (currentDemo != null)
@@ -184,20 +182,20 @@ namespace BulletMonogameDemo
                         if (currentDemo != null)
                         {
                             currentDemo.Initialize();
-                            
+
                             currentDemo.LoadContent();
                         }
                     }
                 }
-               
+
             }
             else
             {
                 currentDemo.Update(gameTime);
                 Rectangle back = new Rectangle(1750, 1000, 200, 30);
-                if (back.Contains(ms.X,ms.Y))
+                if (back.Contains(ms.X, ms.Y))
                 {
-                    if ((ms.LeftButton==ButtonState.Released) && (oldms.LeftButton==ButtonState.Pressed))
+                    if ((ms.LeftButton == ButtonState.Released) && (oldms.LeftButton == ButtonState.Pressed))
                     {
                         currentDemo.Cleanup();
                         currentDemo.Dispose(true);
@@ -243,14 +241,14 @@ namespace BulletMonogameDemo
                     spriteBatch.DrawString(Menu, s, ss, Color.Black);
 
                     r.X += 250;
-                    if (r.X > (GraphicsDevice.Viewport.Width-210))
+                    if (r.X > (GraphicsDevice.Viewport.Width - 210))
                     {
                         r.X = 10;
                         r.Y += 50;
                     }
                     i++;
                 }
-                
+
                 spriteBatch.End();
             }
             else

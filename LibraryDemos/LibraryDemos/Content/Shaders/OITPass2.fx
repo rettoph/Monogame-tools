@@ -19,7 +19,7 @@ struct VertexShaderOutput
 {
 	float4 Position : SV_POSITION;
 	float4 Color	: COLOR0;
-	float  z	: TEXTURE0;
+    float z : TEXCOORD0;
 };
 
 VertexShaderOutput MainVS(in VertexShaderInput input)
@@ -34,7 +34,7 @@ VertexShaderOutput MainVS(in VertexShaderInput input)
 
 struct PixelShaderOutput
 {
-	float Weight		: COLOR0;
+	float4 Weight		: COLOR0;
 };
 
 PixelShaderOutput MainPS(VertexShaderOutput input)

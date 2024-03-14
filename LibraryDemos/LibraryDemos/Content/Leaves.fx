@@ -7,6 +7,14 @@
 
 
 #define MAXBONES 20
+#if OPENGL
+	#define SV_POSITION POSITION
+	#define VS_SHADERMODEL vs_3_0
+	#define PS_SHADERMODEL ps_3_0
+#else
+	#define VS_SHADERMODEL vs_4_0_level_9_1
+	#define PS_SHADERMODEL ps_4_0_level_9_1
+#endif
 
 // 1 means we should only accept opaque pixels.
 // -1 means only accept transparent pixels.
@@ -175,8 +183,8 @@ technique First
     pass Opaque
     {    
 		
-        VertexShader = compile vs_4_0 VertexShaderFunction();
-        PixelShader = compile ps_4_0 PixelShaderFunctionApply();        
+        VertexShader = compile VS_SHADERMODEL VertexShaderFunction();
+        PixelShader = compile PS_SHADERMODEL PixelShaderFunctionApply();
         //AlphaBlendEnable = false;                
         //AlphaTestEnable = true;
         //AlphaFunc = Greater;
@@ -193,8 +201,8 @@ technique Second
     pass BlendedEdges
     {
 	
-        VertexShader = compile vs_4_0 VertexShaderFunction();
-        PixelShader = compile ps_4_0 PixelShaderFunction();        
+        VertexShader = compile VS_SHADERMODEL VertexShaderFunction();
+        PixelShader = compile PS_SHADERMODEL PixelShaderFunction();
         //AlphaBlendEnable = true;
         //SrcBlend = SrcAlpha;		
         //DestBlend = InvSrcAlpha;        
@@ -215,8 +223,8 @@ technique FirstFF
     pass Opaque
     {    
 		
-        VertexShader = compile vs_4_0 VertexShaderFunction();
-        PixelShader = compile ps_4_0 PixelShaderFunctionForward1();        
+        VertexShader = compile VS_SHADERMODEL VertexShaderFunction();
+        PixelShader = compile PS_SHADERMODEL PixelShaderFunctionForward1();
         //AlphaBlendEnable = false;                
         //ZEnable = true;
         //ZWriteEnable = true;        
@@ -229,8 +237,8 @@ technique SecondFF
     pass BlendEdges
     {    
 		
-        VertexShader = compile vs_4_0 VertexShaderFunction();
-        PixelShader = compile ps_4_0 PixelShaderFunctionForward2();        
+        VertexShader = compile VS_SHADERMODEL VertexShaderFunction();
+        PixelShader = compile PS_SHADERMODEL PixelShaderFunctionForward2();
         //AlphaBlendEnable = true;
         //SrcBlend = SrcAlpha;		
         //DestBlend = InvSrcAlpha;        
@@ -245,8 +253,8 @@ technique LEAF
 {
     pass BlendEdges
     {    		
-        VertexShader = compile vs_4_0 VertexShaderFunction();
-        PixelShader = compile ps_4_0 PixelShaderFunctionApplyDEPTH();        
+        VertexShader = compile VS_SHADERMODEL VertexShaderFunction();
+        PixelShader = compile PS_SHADERMODEL PixelShaderFunctionApplyDEPTH();
         //AlphaBlendEnable = false;
         //ZEnable = true;
         //ZWriteEnable = true;
@@ -259,8 +267,8 @@ technique BASIC
 {
     pass BlendEdges
     {    		
-        VertexShader = compile vs_4_0 VertexShaderFunctionBASIC();
-        PixelShader = compile ps_4_0 PixelShaderFunctionBASIC();        
+        VertexShader = compile VS_SHADERMODEL VertexShaderFunctionBASIC();
+        PixelShader = compile PS_SHADERMODEL PixelShaderFunctionBASIC();
         //AlphaBlendEnable = false;
         //ZEnable = true;
         //ZWriteEnable = true;

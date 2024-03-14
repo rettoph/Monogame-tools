@@ -1,132 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{50BAEB62-EA47-4291-8423-F4EE5FE7AF33}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibraryDemos</RootNamespace>
-    <AssemblyName>LibraryDemos</AssemblyName>
-    <FileAlignment>512</FileAlignment>
-    <MonoGamePlatform>Windows</MonoGamePlatform>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+    <MonoGamePlatform>DesktopGL</MonoGamePlatform>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
-    <DefineConstants>TRACE;WINDOWS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="DemoHelpers\ColourSpaces.cs" />
-    <Compile Include="DemoHelpers\QuadPlane.cs" />
-    <Compile Include="DemoHelpers\QuatCamera.cs" />
-    <Compile Include="DemoHelpers\StaticCamera.cs" />
-    <Compile Include="Demos\DemoClass.cs" />
-    <Compile Include="Demos\LibNoiseDemo.cs" />
-    <Compile Include="Demos\LTreeDemo.cs" />
-    <Compile Include="Demos\OITDemo.cs" />
-    <Compile Include="Demos\Q3Demo.cs" />
-    <Compile Include="Game1.cs" />
-    <Compile Include="Primitives2D.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\Leaves.fx" />
-    <Content Include="Content\Q3\basicQ3Effect.fx" />
-    <Content Include="Content\Shaders\OITPass1.fx" />
-    <Content Include="Content\Shaders\OITPass2.fx" />
-    <Content Include="Content\Shaders\OITPass3.fx" />
-    <Content Include="Content\Textures\OITBackdrop.png" />
-    <Content Include="Content\Trees\beil2.jpg" />
-    <Content Include="Content\Trees\BirchBark.png" />
-    <Content Include="Content\Trees\BirchLeaf.png" />
-    <Content Include="Content\Trees\GrayBark.JPG" />
-    <Content Include="Content\Trees\GraywoodLeaf.png" />
-    <Content Include="Content\Trees\OakLeaf.png" />
-    <Content Include="Content\Trees\PineBark.png" />
-    <Content Include="Content\Trees\PineLeaf.png" />
-    <Content Include="Content\Trees\WillowLeaf.png" />
-    <Content Include="Content\Trees\wood_dark.jpg" />
-    <Content Include="Content\Trunk.fx" />
-    <Content Include="Data\Trees\Birch.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Trees\Gardenwood.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Trees\Graywood.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Trees\Pine.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Trees\Rug.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Trees\Willow.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Icon.ico" />
-  </ItemGroup>
+
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
-    <None Include="app.manifest" />
-    <None Include="Content\MenuFont.spritefont" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\LibNoise\LibNoise.csproj">
-      <Project>{10b796e5-a750-4778-bef9-6f9df96210b5}</Project>
-      <Name>LibNoise</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LTree\LTree.csproj">
-      <Project>{846e3bc1-1d47-4a33-9d52-17e4b6e5df1f}</Project>
-      <Name>LTree</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Quake3\Quake3.csproj">
-      <Project>{17619bf0-c665-495b-9a9f-db8845f4a6a1}</Project>
-      <Name>Quake3</Name>
-    </ProjectReference>
+    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\LibNoise\LibNoise.csproj" />
+    <ProjectReference Include="..\LTree\LTree.csproj" />
+    <ProjectReference Include="..\Quake3\Quake3.csproj" />
+  </ItemGroup>
+
 </Project>

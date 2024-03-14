@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using C3.XNA;
+using LibraryDemos.Demos;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-
-using LibraryDemos.Demos;
-using C3.XNA;
 
 namespace LibraryDemos
 {
@@ -47,6 +46,7 @@ namespace LibraryDemos
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
             graphics.GraphicsProfile = GraphicsProfile.HiDef;
+            graphics.IsFullScreen = true;
             Window.Position = new Point(0, 0);
             Window.IsBorderless = true;
             IsMouseVisible = true;
@@ -75,7 +75,7 @@ namespace LibraryDemos
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             MenuFont = Content.Load<SpriteFont>("MenuFont");
-            
+
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace LibraryDemos
         /// </summary>
         protected override void UnloadContent()
         {
-            
+
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace LibraryDemos
                 current_demo.Update(gameTime.ElapsedGameTime.Milliseconds / 1000.0f);
                 if ((last_mouse_state.LeftButton == ButtonState.Pressed) && (current_mouse_state.LeftButton == ButtonState.Released))
                 {
-                    if (back_button.Contains(current_mouse_state.X,current_mouse_state.Y))
+                    if (back_button.Contains(current_mouse_state.X, current_mouse_state.Y))
                     {
                         current_demo.Unload();
                         current_demo = null;
@@ -202,7 +202,7 @@ namespace LibraryDemos
             size.X += r.X + (r.Width / 2);
             size.Y += r.Y + (r.Height / 2);
 
-            if (r.Contains(current_mouse_state.X,current_mouse_state.Y))
+            if (r.Contains(current_mouse_state.X, current_mouse_state.Y))
                 spriteBatch.FillRectangle(r, Color.DarkOrange);
             else
                 spriteBatch.FillRectangle(r, Color.DarkSlateBlue);

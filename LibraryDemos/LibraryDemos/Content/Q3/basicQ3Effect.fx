@@ -59,8 +59,8 @@ technique TransformAndTextureDiffuse
 {
     pass P0
     {
-        vertexShader = compile vs_4_0 TransformDiffuse();
-        pixelShader  = compile ps_4_0 ApplyDiffuseTexture();
+        vertexShader = compile vs_3_0 TransformDiffuse();
+        pixelShader  = compile ps_3_0 ApplyDiffuseTexture();
     }
 }
 
@@ -68,7 +68,7 @@ technique TransformAndTextureDiffuseAndLightMap
 {
     pass P0
     {
-        vertexShader = compile vs_4_0 TransformDiffuse();
-        pixelShader  = compile ps_4_0 ApplyDiffuseLightMapTexture();
+        vertexShader = compile vs_3_0 TransformDiffuse();
+        pixelShader  = compile ps_3_0 ApplyDiffuseLightMapTexture();
     }
 }
